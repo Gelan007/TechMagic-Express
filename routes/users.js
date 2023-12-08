@@ -6,7 +6,7 @@ const usersController = require('../controllers/users')
 const router = express.Router()
 
 router.get('/', usersController.getUsersList)
-// router.get('/:userId/', usersController.getUserById)
+router.get('/:email/', usersController.getUserByEmail)
 router.post('/', usersMdware.validateBody, usersController.createUser)
 // router.patch('/:userId', usersMdware.validateBody, usersController.updateUser)
 // router.delete('/:userId', usersController.deleteUser)
