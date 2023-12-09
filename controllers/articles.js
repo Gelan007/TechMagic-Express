@@ -32,7 +32,7 @@ function createArticle(req, res) {
         id: uuidv4(),
         ...req.body
     }
-    articles.push(req.body)
+    articles.push(newArticle)
     res.status(201).json(req.body)
 }
 function updateArticleTags(req, res) {

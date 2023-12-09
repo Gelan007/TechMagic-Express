@@ -73,7 +73,7 @@ function createUser(req, res) {
 }
 
 function updateUser(req, res) {
-    const userEmail = req.params.userEmail
+    const userEmail = req.params.email
     const updatedData = req.body
     const user = usersDocuments.find(u => u.email === userEmail)
     const duplicate = usersDocuments.find(u => u.email === updatedData.email)
@@ -88,7 +88,7 @@ function updateUser(req, res) {
 }
 
 function deleteUser (req, res) {
-    const userEmail = req.params.userEmail;
+    const userEmail = req.params.email;
     const userIndex = usersDocuments.findIndex(u => u.email === userEmail);
     if(userIndex === -1) {
         return res.status(404).json({message: 'User not found'});
