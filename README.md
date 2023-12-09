@@ -42,7 +42,7 @@ The app provides the following API routes:
 - POST /articles - Create an article
 - PATCH /articles/update-tags/:id - Update tags of an article
   
-There is an auto generation of UUID for each article.
+There is an auto generation of UUID for articles.
 
 Input payload validation added for routes like POST and PATCH requests.  
 Standardized error handling is implemented for all routes. 
