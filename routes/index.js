@@ -1,5 +1,6 @@
 const express = require('express')
 const usersRouter = require('./users')
+const studentsRouter = require('./students')
 
 const router = express.Router()
 
@@ -8,5 +9,6 @@ const router = express.Router()
 })*/
 
 router.use('/users', usersRouter)
+router.use('/students', studentsRouter)
 
 module.exports = router
