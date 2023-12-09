@@ -3,7 +3,7 @@ const usersDocuments = [
         "firstName": "John",
         "lastName": "Doe",
         "email": "johndoe@example.com",
-        "password": "mysecretpassword",
+        "password": "mysecretpassword1",
         "age": 30,
         "address": {
             "street": "123 Main St",
@@ -22,7 +22,7 @@ const usersDocuments = [
         "firstName": "Alice",
         "lastName": "Smith",
         "email": "alice@example.com",
-        "password": "mysecretpassword",
+        "password": "mysecretpassword2",
         "age": 20,
         "address": {
             "street": "12353 Main St",
@@ -60,7 +60,6 @@ function createUser(req, res) {
     if(duplicate) {
         return res.status(400).json({message: 'This email is already taken'})
     }
-
     const newUser = {
         firstName,
         lastName,
@@ -73,9 +72,19 @@ function createUser(req, res) {
     res.status(201).json(newUser)
 }
 
-function updateUser (req, res) {
-    console.log(req.body)
-    res.send('User updated')
+function updateUser(req, res) {
+    const userEmail = req.params.userEmail
+    const updatedData = req.body
+    const user = usersDocuments.find(u => u.email === userEmail)
+    const duplicate = usersDocuments.find(u => u.email === updatedData.email)
+    if(!user) {
+        return res.status(404).json({message: 'User not found'})
+    }
+    if(duplicate) {
+        return res.status(400).json({message: 'This email is already taken'})
+    }
+    Object.assign(user, updatedData)
+    return res.json(user)
 }
 
 function deleteUser (req, res) {
