@@ -9,6 +9,6 @@ router.get('/', usersController.getUsersList)
 router.get('/:email/', usersController.getUserByEmail)
 router.post('/', usersMdware.validateBody, usersController.createUser)
 router.patch('/:userEmail', usersMdware.validateBodyPartial, usersController.updateUser)
-// router.delete('/:userId', usersController.deleteUser)
+router.delete('/:userEmail', usersController.deleteUser)
 
 module.exports = router

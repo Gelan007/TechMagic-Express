@@ -88,7 +88,13 @@ function updateUser(req, res) {
 }
 
 function deleteUser (req, res) {
-    res.send('Users deleted')
+    const userEmail = req.params.userEmail;
+    const userIndex = usersDocuments.findIndex(u => u.email === userEmail);
+    if(userIndex === -1) {
+        return res.status(404).json({message: 'User not found'});
+    }
+    usersDocuments.splice(userIndex, 1);
+    return res.send(`User ${userEmail} has been deleted`);
 }
 
 module.exports = {
