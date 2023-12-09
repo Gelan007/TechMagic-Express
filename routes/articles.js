@@ -5,5 +5,6 @@ const router = express.Router()
 
 router.get('/', articlesController.getArticles)
 router.post('/', articlesMdware.validateBody, articlesController.createArticle)
+router.patch('/update-tags/:articleId', articlesController.updateArticleTags)
 
 module.exports = router
